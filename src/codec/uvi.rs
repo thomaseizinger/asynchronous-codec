@@ -1,6 +1,6 @@
-use std::io;
-use bytes::{Buf, Bytes, BytesMut};
 use crate::{Decoder, Encoder};
+use bytes::{Buf, Bytes, BytesMut};
+use std::io;
 
 /// Prefixes each byte slice with its length as an [unsigned, variable-length integer](https://github.com/multiformats/unsigned-varint).
 #[derive(Default)]
@@ -31,7 +31,7 @@ impl Decoder for UviCodec {
         let (len, remaining) = match unsigned_varint::decode::usize(src) {
             Ok((len, remaining)) => (len, remaining),
             Err(unsigned_varint::decode::Error::Insufficient) => return Ok(None),
-            Err(e ) => return Err(io::Error::new(io::ErrorKind::InvalidData, e)),
+            Err(e) => return Err(io::Error::new(io::ErrorKind::InvalidData, e)),
         };
         let consumed = src.len() - remaining.len();
         src.advance(consumed);

@@ -25,12 +25,12 @@ mod codec;
 pub use bytes::{Bytes, BytesMut};
 pub use codec::{BytesCodec, LengthCodec, LinesCodec};
 
+#[cfg(feature = "uvi")]
+pub use codec::UviCodec;
 #[cfg(feature = "cbor")]
 pub use codec::{CborCodec, CborCodecError};
 #[cfg(feature = "json")]
 pub use codec::{JsonCodec, JsonCodecError};
-#[cfg(feature = "uvi")]
-pub use codec::UviCodec;
 
 mod decoder;
 pub use decoder::Decoder;
