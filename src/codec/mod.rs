@@ -7,6 +7,11 @@ pub use self::length::LengthCodec;
 mod lines;
 pub use self::lines::LinesCodec;
 
+#[cfg(feature = "uvi")]
+mod uvi;
+#[cfg(feature = "uvi")]
+pub use self::uvi::UviCodec;
+
 #[cfg(feature = "json")]
 mod json;
 #[cfg(feature = "json")]

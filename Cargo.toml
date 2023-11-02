@@ -16,6 +16,7 @@ categories = ["asynchronous", "network-programming"]
 default = []
 json = [ "serde", "serde_json" ]
 cbor = [ "serde", "serde_cbor" ]
+uvi = ["dep:unsigned-varint"]
 
 [dependencies]
 bytes = "1"
@@ -26,6 +27,7 @@ pin-project-lite = "0.2"
 serde = { version = "1", optional = true, features = ["derive"] }
 serde_json = { version = "1", optional = true }
 serde_cbor = { version = "0.11", optional = true }
+unsigned-varint = { version = "0.7.2", optional = true, features = ["std"] }
 
 [dev-dependencies]
 futures = "0.3"
